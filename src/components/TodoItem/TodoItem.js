@@ -1,4 +1,6 @@
 import './TodoItem.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 export default function TodoItem({ task, deleteTask, toggleCompleted }) {
 
@@ -7,10 +9,10 @@ export default function TodoItem({ task, deleteTask, toggleCompleted }) {
     }
 
     return (
-        <div>
-           <input type='checkbox' checked={task.completed} onChange={handleChange} />
+        <div className='todo-item'>
+           <input className="check" type='checkbox' checked={task.completed} onChange={() => {handleChange();console.log('check');}} />
            <p>{task.text}</p>
-           <button onClick={() => deleteTask(task.id)}>Delete</button> 
+           <button className="add" onClick={() => deleteTask(task.id)}><FontAwesomeIcon icon={faX} /></button> 
         </div>
     );
 }
